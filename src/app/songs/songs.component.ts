@@ -2,6 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { SongService } from './song.service';
 
 
+//Interface   
+interface IDatos{
+  tracks:{
+    items:[];
+  }
+}
+
 @Component({
   selector: 'app-songs',
   templateUrl: './songs.component.html',
@@ -9,35 +16,25 @@ import { SongService } from './song.service';
 })
 export class SongsComponent implements OnInit {
 
-  nameAdd:string = '';
-  typeAdd:string = '';
-  authorAdd:string = '';
+  newSong:string = '';
   songs:object [] = [];
 
-  
-
-
-
   constructor(private songService: SongService ){
-      this.nameAdd = 'Escriba una cancion';
-      this.typeAdd = 'Escriba el Tipo';
-      this.authorAdd = 'Escriba un autor';
-      
-      this.songs = this.songService.getSongs();
+        
+      //this.songs = this.songService.getSongs();
+
   }
 
+  searchSong(){
+    this.songService.getSongs(this.newSong)
+      .then((response:IDatos) => {
+        console.log(response);
+        this.songs = response.tracks.items;
+      })
+      .catch(error => console.log(error));
+  }
   
 
-  addSong() {
-      this.songs.push(
-          {'name':this.nameAdd,
-           'type':this.typeAdd,
-           'author':this.authorAdd}
-          );
-          this.nameAdd = '';
-          this.typeAdd = '';
-          this.authorAdd = '';
-  }
   ngOnInit() {
   }
 

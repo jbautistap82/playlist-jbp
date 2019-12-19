@@ -1,0 +1,12 @@
+<p>Artists</p>
+<input type='text' name='artistName' [(ngModel)] = 'newArtist'/> 
+<button (click) = 'searchArtists()'>Buscar</button>
+
+
+<table>
+    <tr *ngFor='let artist of artists'>
+        <td>Artista: </td><td>{{artist.name}} </td>
+        <td><span *ngFor='let genre of artist.genres'>{{genre}} -- </span></td>
+        
+    </tr>
+</table>
