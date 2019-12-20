@@ -1,7 +1,13 @@
 
 <p>Songs</p>
-<input type='text' name='songName' [(ngModel)] = 'newSong'/> 
-<button (click) = 'searchSong()'>Buscar</button>
+<!--<input type='text' name='songName' [(ngModel)] = 'newSong'/> -->
+<div class="example-container">
+    <mat-form-field>
+      <input  matInput placeholder="Cancion"[(ngModel)] = 'newSong'/> 
+    </mat-form-field>    
+    <button mat-raised-button color="primary" (click) = 'searchSong()' >Buscar</button>
+</div>
+
 
 
 <table>

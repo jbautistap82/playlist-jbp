@@ -1,5 +1,5 @@
 
 
 export class AppSettings {
-    public static TOKEN_API_SPOTIFY='BQAqXrDk4QPuBohIUFnaWtm21PzY-mYQxrXok32yko5CleyJEH_Das6eM3vytVsp0dCYhgBj-EQ6XcC5pOVNjIn3AOfgujjAZPF7DBlQL4v5AFDr_q1dDAkW3RFz6ygLAEFchQBBSD666FE';
+    public static TOKEN_API_SPOTIFY='BQCuFMvkNv2ERwDdH3oMibx09WME0CQeObhj1ckDaPX5iIQxyJVmwNXKaZSj1x6EzlMFVE_W7z8ixaYI0fLble2a5rGmDQLKQqAY_JP3JSIYIjIGWHV';
  }

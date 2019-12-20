@@ -9,20 +9,29 @@ import { HttpClientModule } from '@angular/common/http';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ArtistsComponent } from './artists/artists.component';
 import { ArtistService } from './artists/artist.service';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AlbumsComponent } from './albums/albums.component';
+import { MatSliderModule } from '@angular/material/slider';
+import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
     AppComponent,
     SongsComponent,
     NotFoundComponent,
-    ArtistsComponent
+    ArtistsComponent,
+    AlbumsComponent
   ],
   imports: [
     BrowserModule, 
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatSliderModule,
+    MatButtonModule,
+    MatFormFieldModule
   ],
   providers: [
     SongService,
