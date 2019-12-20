@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SongService } from './song.service';
+import { LoginService } from '../login/login.service';
+import { Router } from '@angular/router';
 
 
 //Interface   
@@ -19,7 +21,9 @@ export class SongsComponent implements OnInit {
   newSong:string = '';
   songs:object [] = [];
 
-  constructor(private songService: SongService ){
+  constructor(private songService: SongService,
+    private loginServices:LoginService,
+    private router:Router ){
         
       //this.songs = this.songService.getSongs();
 
@@ -36,6 +40,11 @@ export class SongsComponent implements OnInit {
   
 
   ngOnInit() {
+    if(!this.loginServices.getToken()){
+      this.router.navigate(['login']);
+    }
+
+
   }
 
 }

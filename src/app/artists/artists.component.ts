@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ArtistService } from './artist.service';
+import { LoginService } from '../login/login.service';
+import { Router } from '@angular/router';
 
 
 //Interface   
@@ -21,7 +23,9 @@ export class ArtistsComponent implements OnInit {
   newArtist:string = '';
   artists:object [] = [];
 
-  constructor(private artistService:ArtistService) { 
+  constructor(private artistService:ArtistService,
+    private loginServices:LoginService,
+    private router:Router) { 
 
   }
 
@@ -36,6 +40,9 @@ export class ArtistsComponent implements OnInit {
 
 
   ngOnInit() {
+    if(!this.loginServices.getToken()){
+      this.router.navigate(['login']);
+    }
   }
 
 }

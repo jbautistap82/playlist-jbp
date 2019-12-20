@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 
 import { environment } from '../../environments/environment';
+import { LoginService } from '../login/login.service';
 
 
 @Injectable({
@@ -9,9 +10,11 @@ import { environment } from '../../environments/environment';
 })
 export class ArtistService {
 
+  token:string = '';
 
-
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private loginService:LoginService) { 
+    this.token = loginService.getToken();
+  }
 
   getArtists(nameArtist){
     
@@ -22,7 +25,7 @@ export class ArtistService {
             headers: new HttpHeaders({
             "Accept": "application/json",
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${environment.ACCESS_TOKEN}`
+            "Authorization": `Bearer ${this.token}`
             })
           }).toPromise();
 
@@ -36,7 +39,7 @@ export class ArtistService {
         headers: new HttpHeaders({
           "Accept": "application/json",
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${environment.ACCESS_TOKEN}`
+          "Authorization": `Bearer ${this.token}`
         })
     })
     .toPromise();

@@ -2,13 +2,17 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 import { environment } from '../../environments/environment';
+import { LoginService } from '../login/login.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SongService {
 
-  constructor(private httpClient: HttpClient) { }
+  token:string='';
+  constructor(private httpClient: HttpClient, private loginServices:LoginService) { 
+    this.token = this.loginServices.getToken();
+  }
 
   getSongs(nameSong){
     
@@ -18,7 +22,7 @@ export class SongService {
       headers: new HttpHeaders({
         "Accept": "application/json",
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${environment.ACCESS_TOKEN}`
+        "Authorization": `Bearer ${this.token}`
       })
     }).toPromise();
 
